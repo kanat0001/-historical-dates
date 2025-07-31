@@ -1,75 +1,20 @@
 import React from 'react'
 import { useState } from 'react';
+import {cardsData, PeriodKey} from './data/cardsData'
+import Cards from './components/Cards'
+import CircleButton from './components/CircleButton';
 
-function App() {
-  const data = {
-    '1': [
-      {id: 1, text: 'Запуск спутника'},
-      {id: 2, text: 'Запуск второго спутника'},
-      {id: 3, text: 'Запуск третьего спутника'},
-      {id: 4, text: 'Запуск четвертого спутника'},
-    ],
-    '2':[
-      {id: 5, text: 'запуск пятого спутника'},
-      {id: 6, text: 'запуск шестого спутника'},
-      {id: 7, text: 'запуск седьмого спутника'},
-      {id: 8, text: 'запуск восьмого спутника'},
-    ],
-    '3': [
-      {id: 1, text: 'Запуск спутника'},
-      {id: 2, text: 'Запуск второго спутника'},
-      {id: 3, text: 'Запуск третьего спутника'},
-      {id: 4, text: 'Запуск четвертого спутника'},
-    ],
-    '4': [
-      {id: 1, text: 'Запуск спутника'},
-      {id: 2, text: 'Запуск второго спутника'},
-      {id: 3, text: 'Запуск третьего спутника'},
-      {id: 4, text: 'Запуск четвертого спутника'},
-    ],
-    '5': [
-      {id: 1, text: 'Запуск спутника'},
-      {id: 2, text: 'Запуск второго спутника'},
-      {id: 3, text: 'Запуск третьего спутника'},
-      {id: 4, text: 'Запуск четвертого спутника'},
-    ],
-    '6': [
-      {id: 1, text: 'Запуск спутника'},
-      {id: 2, text: 'Запуск второго спутника'},
-      {id: 3, text: 'Запуск третьего спутника'},
-      {id: 4, text: 'Запуск четвертого спутника'},
-    ] as const,
-  };
-  type PeriodKey = keyof typeof data;
-
+const App: React.FC = () => {
   const [historyButton, setHistoryButton] = useState<PeriodKey>('1')
-  
-
-  
-
-
-
-
-  
+  console.log('Текущий период:', historyButton);
 
   return (
    <div>
     <h1>исторические даты</h1>
-    <div>
-      {Object.keys(data).map((key)=> (
-        <button
-        key={key}
-        onClick={()=> setHistoryButton(key as PeriodKey)}>
-          Период {key}
-        </button>
-      ))}
-    </div>
+    
+    <CircleButton onSelect={(key) => setHistoryButton(key as PeriodKey)}/>
 
-    <div>
-      {data[historyButton].map((item) => (
-        <div key={item.id}>{item.text}</div>
-      ))}
-    </div>
+    <Cards period={historyButton}/>
    </div>
   )
 }

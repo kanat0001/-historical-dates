@@ -12,14 +12,18 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'], // чтобы не писать расширения
   },
   module: {
-    rules: [
-      {
-        test: /\.tsx?$/, // для всех ts и tsx файлов
-        use: 'ts-loader',
-        exclude: /node_modules/, // не трогать зависимости
-      },
-    ],
-  },
+  rules: [
+    {
+      test: /\.tsx?$/,
+      use: 'ts-loader',
+      exclude: /node_modules/,
+    },
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader'],
+    },
+  ],
+},
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html', // этот HTML будет шаблоном
