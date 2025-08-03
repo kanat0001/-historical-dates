@@ -2,31 +2,31 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx', // входной файл
+  entry: './src/index.tsx',
   output: {
-    filename: 'bundle.js', // выходной JS-файл
-    path: path.resolve(__dirname, 'dist'), // куда всё складывать
-    clean: true, // очищать dist перед каждой сборкой
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'], // чтобы не писать расширения
+    extensions: ['.tsx', '.ts', '.js'],
   },
   module: {
-  rules: [
-    {
-      test: /\.tsx?$/,
-      use: 'ts-loader',
-      exclude: /node_modules/,
-    },
-    {
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader'],
-    },
-  ],
-},
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './dist/index.html', // этот HTML будет шаблоном
+      template: './src/index.html', // ← важно: шаблон должен быть в src
     }),
   ],
   devServer: {
@@ -35,5 +35,5 @@ module.exports = {
     open: true,
     hot: true,
   },
-  mode: 'development', // режим: разработка
+  mode: 'production', // ← выстави production для билда
 };

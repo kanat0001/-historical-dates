@@ -1,17 +1,15 @@
 {
   "name": "history-app",
   "version": "1.0.0",
+  "description": "React app bundled with Webpack for deployment to Vercel",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "webpack serve --open --static dist",
+    "dev": "webpack serve --open",
     "start": "webpack serve"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",

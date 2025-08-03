@@ -40,7 +40,7 @@ const App: React.FC = () => {
 
           <div  className='circle-button'>
 
-            <p></p>
+            <p>0{historyButton}/ 06</p>
             <div>
               <button className='circle-button-prev' onClick={()=> circleRef.current?.goToPrev()}><GrPrevious /></button>
               <button className='circle-button-next' onClick={()=> circleRef.current?.goToNext()}><GrNext /></button></div>              

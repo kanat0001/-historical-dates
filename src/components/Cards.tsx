@@ -31,7 +31,7 @@ const Cards: React.FC<Props> = ({ period }) => {
     if (!isDragging || !container) return
     e.preventDefault()
     const x = e.pageX - container.offsetLeft
-    const walk = (x - startX) * 0.5
+    const walk = (x - startX) * 0.7
     container.scrollLeft = scrollLeft - walk
   }
 
