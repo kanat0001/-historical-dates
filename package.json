@@ -9,13 +9,13 @@
     "start": "webpack serve"
   },
   "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-icons": "^5.5.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-icons": "^5.5.0",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.2",
     "typescript": "^5.9.2",
