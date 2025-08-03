@@ -1,63 +1,84 @@
-import React from "react";
-import { useState } from "react";
-import {cardsData} from '../data/cardsData'
+import { useState, forwardRef, useImperativeHandle } from "react";
+import { cardsData, PeriodKey } from "../data/cardsData";
+import AnimatedYearRange from "./YearCards";
+import "./CircleButton.css";
 
+type Props = {
+  onSelect: (periodKey: string) => void;
+  selectedKey: PeriodKey;
+};
 
-import './CircleButton.css'
-type Props ={
-    onSelect: (periodKey: string) => void;
-}
+export type CircleButtonHandle = {
+  goToNext: () => void;
+  goToPrev: () => void;
+};
 
-const keys = Object.keys(cardsData)
+const keys = Object.keys(cardsData);
 
-const CircleButton: React.FC<Props> = ({onSelect}) => {
+const CircleButton = forwardRef<CircleButtonHandle, Props>(
+  ({ onSelect, selectedKey }, ref) => {
+    const buttonCount = keys.length;
+    const radius = 280;
+    const [rotation, setRotation] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-  const buttonCount = keys.length;
-  const radius = 200;
-  const [rotation, setRotation] = useState(0);
+    const handleClick = (index: number) => {
+      const anglePerButton = 360 / buttonCount;
+      const targetAngle = index * anglePerButton;
+      setRotation(-targetAngle);
+      setCurrentIndex(index);
+      const periodKey = keys[index];
+      onSelect(periodKey);
+    };
 
-  const handleClick = (index: number) => {
-    const anglePerButton = 360 / buttonCount;
-    const targetAngle = index * anglePerButton; 
-    setRotation(-targetAngle)
+    const goToNextButton = () => {
+      const nextIndex = (currentIndex + 1) % buttonCount;
+      handleClick(nextIndex);
+    };
 
-    const periodKey = keys[index]
-    onSelect(periodKey)
-    console.log('🔘 Выбранный ключ:', periodKey);
+    const goToPrevious = () => {
+      const previousIndex = (currentIndex - 1 + buttonCount) % buttonCount;
+      handleClick(previousIndex);
+    };
 
-  };
-  return (
-    <div className="circle-wrapper">
-      <div
-        className="circle"
-        style={{
-          transform: `rotate(${rotation}deg)`,
-          transition: 'transform 1s ease-in-out',
-        }}
-      >
-        {keys.map((key, i) => {
-          const angle = (360 / buttonCount) * i - 60;
-          const rad = (angle * Math.PI) / 180;
-          const x = Math.cos(rad) * radius;
-          const y = Math.sin(rad) * radius;
+    useImperativeHandle(ref, () => ({
+      goToNext: goToNextButton,
+      goToPrev: goToPrevious
+    }));
 
-          return (
-            <button
-              key={i}
-              className="circle-btn"
-              style={{
-                transform: `translate(${x}px, ${y}px) rotate(${-rotation}deg)`,
-              }}
-              onClick={() => handleClick(i)}
-            >
-              {key}
-            </button>
-          );
-        })}
+    return (
+        <div className="circle-wrapper">
+        <div
+          className="circle"
+          style={{
+            transform: `rotate(${rotation}deg)`,
+            transition: "transform 1s ease-in-out"
+          }}
+        >
+          {keys.map((key, i) => {
+            const angle = (360 / buttonCount) * i - 60;
+            const rad = (angle * Math.PI) / 180;
+            const x = Math.cos(rad) * radius;
+            const y = Math.sin(rad) * radius;
+
+            return (
+              <button
+                key={i}
+                className="circle-btn"
+                style={{
+                  transform: `translate(${x}px, ${y}px) rotate(${-rotation}deg)`
+                }}
+                onClick={() => handleClick(i)}
+              >
+                {key}
+              </button>
+            );
+          })}
+        </div>
+        <AnimatedYearRange selectedKey={selectedKey} />
       </div>
-    </div>
-  );
+    );
+  }
+);
 
-} 
-
-export default CircleButton
+export default CircleButton;

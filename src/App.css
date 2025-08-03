@@ -1,0 +1,86 @@
+body{
+  margin: 0;
+}
+.page {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  border: 0.5px solid rgb(201, 198, 198);
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.line {
+  position: absolute;
+  background-color: grey;
+}
+
+.vertical {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.horizontal {
+  height: 1px;
+  width: 100%;
+  top: 40%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+/* Кольцо */
+.ring {
+  position: absolute;
+  width: 570px;
+  height: 570px;
+  border: 0.5px solid grey; /* тоже временно ярким */
+  border-radius: 50%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.content {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  z-index: 1;
+} 
+.content h1{
+  font-family: "PT Sans", sans-serif;
+  font-size: 56px;
+  color: #42567A;
+  margin: 100px 0 0 78px;
+}
+
+.circle-button{
+    margin-top: 450px;
+    margin-bottom: 10px;
+    margin-left:80px;
+    gap: 20px;
+}
+.circle-button button {
+  border: 1px solid grey;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+
+}

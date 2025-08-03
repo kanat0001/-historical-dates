@@ -26,7 +26,7 @@ module.exports = {
 },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html', // этот HTML будет шаблоном
+      template: './dist/index.html', // этот HTML будет шаблоном
     }),
   ],
   devServer: {
