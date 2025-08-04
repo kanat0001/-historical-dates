@@ -43,12 +43,11 @@ body{
   transform: translateY(-50%);
 }
 
-/* Кольцо */
 .ring {
   position: absolute;
   width: 570px;
   height: 570px;
-  border: 0.5px solid grey; /* тоже временно ярким */
+  border: 0.5px solid grey;
   border-radius: 50%;
   top: 40%;
   left: 50%;
@@ -60,8 +59,7 @@ body{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
+
   z-index: 1;
 } 
 .content h1{

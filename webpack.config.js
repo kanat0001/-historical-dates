@@ -26,7 +26,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html', // ← важно: шаблон должен быть в src
+      template: './src/index.html', 
     }),
   ],
   devServer: {
@@ -35,5 +35,5 @@ module.exports = {
     open: true,
     hot: true,
   },
-  mode: 'production', // ← выстави production для билда
+  mode: 'production',
 };

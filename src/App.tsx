@@ -20,7 +20,6 @@ const App: React.FC = () => {
   console.log(`${historyButton} активная кнопка`)
  return (
     <div className="page">
-      {/* Фон */}
       <div className="background">
         <div className="line vertical" />
         <div className="line horizontal" />
@@ -53,9 +52,3 @@ const App: React.FC = () => {
 }
 
 export default App
-
-
-    // <CircleButton onSelect={(key) => setHistoryButton(key as PeriodKey)}
-    //    selectedKey={historyButton}/>
-
-    // <Cards period={historyButton}/>

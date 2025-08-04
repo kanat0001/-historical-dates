@@ -8,12 +8,6 @@
   font-size: 200px;
   pointer-events: none;
   font-family: "PT Sans", sans-serif;
-  /* font-size: 24px;
-  font-weight: 600;
-  text-align: center;
-  margin: 20px 0;
-  color: #333;
-  transition: color 0.3s ease; */
 }
 
 .year-min{
@@ -22,18 +16,3 @@
 .year-max{
   color: rgb(239, 93, 168);
 }
-
-/* .year-range p {
-  margin: 0;
-}
-.year{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    font-size: 20px;
-    font-size: 20px;
-    transform: scale(5.5) translateY(41px);
-} */
