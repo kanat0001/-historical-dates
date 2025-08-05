@@ -35,5 +35,9 @@ module.exports = {
     open: true,
     hot: true,
   },
+  performance: {
+    maxAssetSize: 512000, // лимит для одного файла (500 КБ)
+    maxEntrypointSize: 512000, // лимит для точки входа (500 КБ)
+  },
   mode: 'production',
 };

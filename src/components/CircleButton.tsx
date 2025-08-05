@@ -15,6 +15,15 @@ export type CircleButtonHandle = {
 
 const keys = Object.keys(cardsData);
 
+const keyTitles: Record<string, string> = {
+  "1": "Наука",
+  "2": "Образование",
+  "3": "История",
+  "4": "Кино",
+  "5": "Технологии",
+  "6": "Литература"
+}
+
 const CircleButton = forwardRef<CircleButtonHandle, Props>(
   ({ onSelect, selectedKey }, ref) => {
     const buttonCount = keys.length;
@@ -48,6 +57,7 @@ const CircleButton = forwardRef<CircleButtonHandle, Props>(
 
     return (
         <div className="circle-wrapper">
+          <div className="button-name" key={selectedKey}>{keyTitles[selectedKey]}</div>
         <div
           className="circle"
           style={{
@@ -64,13 +74,13 @@ const CircleButton = forwardRef<CircleButtonHandle, Props>(
             return (
               <button
                 key={i}
-                className="circle-btn"
+                className={`circle-btn ${selectedKey === key ? 'active' : ''}`}
                 style={{
                   transform: `translate(${x}px, ${y}px) rotate(${-rotation}deg)`
                 }}
                 onClick={() => handleClick(i)}
               >
-                {key}
+                <span className="circle-btn-text">{key}</span>
               </button>
             );
           })}

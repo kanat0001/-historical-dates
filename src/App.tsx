@@ -19,7 +19,44 @@ const App: React.FC = () => {
   }
   console.log(`${historyButton} активная кнопка`)
  return (
-    <div className="page">
+  <div className='app'>
+    <div className='page'>
+      <div className='background'>
+        <div className="vertical-line" />
+        <div className="horizontal-line" />
+        <div className='ring'></div>
+      </div>
+      <div className='content'>
+        <h1>исторические <br /> даты</h1>
+             <div>
+                <CircleButton 
+                onSelect={(key) => setHistoryButton(key as PeriodKey)}
+                selectedKey={historyButton}
+                ref={circleRef}
+                />
+             </div>
+             <div className='last-content'>
+                <div  className='circle-button'>
+
+                    <p>0{historyButton}/ 06</p>
+                    <div>
+                    <button className='circle-button-prev' onClick={()=> circleRef.current?.goToPrev()}><GrPrevious /></button>
+                    <button className='circle-button-next' onClick={()=> circleRef.current?.goToNext()}><GrNext /></button></div>              
+                    </div>
+                  <Cards period={historyButton}/>
+             </div>
+        </div>
+
+
+    </div>
+  </div>
+
+  );
+}
+
+export default App
+
+/*      <div className="page">
       <div className="background">
         <div className="line vertical" />
         <div className="line horizontal" />
@@ -29,7 +66,7 @@ const App: React.FC = () => {
 
         <div className='content'>
 
-          <h1>исторические <br /> даты</h1>
+
 
           <CircleButton 
           onSelect={(key) => setHistoryButton(key as PeriodKey)}
@@ -47,8 +84,4 @@ const App: React.FC = () => {
 
           <Cards period={historyButton}/>
         </div>
-    </div>
-  );
-}
-
-export default App
+    </div> */

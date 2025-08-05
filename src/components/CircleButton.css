@@ -2,7 +2,7 @@
   position: absolute;
   top: 50%;    
   left: 50%;     
-  width: 500px;
+  width: 800px;
   height: 500px;
   transform: translate(-50%, -69%); 
 
@@ -15,19 +15,83 @@
     height: 100%;
     transform-origin: center;
 }
+.button-name{
+  position: absolute;
+  top: 0;
+  margin-left: 620px; /* сверху и справа отступы */
+  font-size: 20px;
+  font-weight: 700;
+  color: #42567A;
+  z-index: 30;
+  animation: fadeIn 0.4s ease-in-out;
+  opacity: 1;
+}
+.button-name {
+  animation: fadeIn 0.6s ease-in-out;
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .circle-btn {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 60px;
-  height: 60px;
-  margin: -30px;
+  width: 10px;
+  height: 13px;
+  margin: -5px;
   border-radius: 50%;
-  border: 1px solid grey;
-  background-color: white;
+  border: none;
+  background-color: #42567A;
   color: black;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.5s ease;
+  transition:
+    width 0.4s cubic-bezier(.4,0,.2,1),
+    height 0.4s cubic-bezier(.4,0,.2,1),
+    margin 0.4s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.4s cubic-bezier(.4,0,.2,1),
+    transform 0.5s ease,
+    background-color 0.3s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+  z-index: 20;
+}
+
+.circle-btn:hover,
+.circle-btn.active {
+  width: 60px;
+  height: 60px;
+  margin: -30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  background-color: white;
+  border: 1px solid grey;
+}
+.circle-btn.active .circle-btn-text,
+.circle-btn:hover .circle-btn-text {
+  opacity: 1;
+}
+.circle-btn-text {
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-size: 20px;
+  font-weight: 400;
+}
+.circle-btn:hover .circle-btn-text {
+  opacity: 1;
 }

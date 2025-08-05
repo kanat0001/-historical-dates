@@ -1,6 +1,5 @@
-import React from 'react'
-import { useState, useRef } from 'react'
-import {cardsData, PeriodKey} from '../data/cardsData'
+import React, { useState, useRef, useEffect } from 'react'
+import { cardsData, PeriodKey } from '../data/cardsData'
 import './Cards.css'
 
 type Props = {
@@ -13,6 +12,18 @@ const Cards: React.FC<Props> = ({ period }) => {
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
+  const [visible, setVisible] = useState(true)
+  const prevPeriod = useRef(period)
+
+  useEffect(() => {
+    if (prevPeriod.current !== period) {
+      setVisible(false)
+      setTimeout(() => {
+        setVisible(true)
+        prevPeriod.current = period
+      }, 400) 
+    }
+  }, [period])
 
   const scrollBy = (distance: number) => {
     containerRef.current?.scrollBy({ left: distance, behavior: 'smooth' })
@@ -51,7 +62,7 @@ const Cards: React.FC<Props> = ({ period }) => {
         onMouseLeave={handleMouseLeave}
       >
         {items.map((item) => (
-          <div className="card" key={item.id}>
+          <div className={`card${!visible ? ' hide' : ''}`} key={item.id}>
             <h3 className='card-years'>{item.id}</h3>
             <p className='card-content'>{item.text}</p>
           </div>

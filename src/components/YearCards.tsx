@@ -38,7 +38,7 @@ const AnimatedYearRange: React.FC<Props> = ({ selectedKey }) => {
     <div className="year-range">
       <p className="year">
         <span className="year-min">{displayMin}</span>
-        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;
         <span className="year-max">{displayMax}</span></p>
     </div>
   )
