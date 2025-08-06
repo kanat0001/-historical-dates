@@ -15,6 +15,8 @@
     height: 100%;
     transform-origin: center;
 }
+
+
 .button-name{
   position: absolute;
   top: 0;
@@ -30,6 +32,9 @@
   animation: fadeIn 0.6s ease-in-out;
   opacity: 1;
 }
+.mobile-circle {
+  display: none;
+}
 
 @keyframes fadeIn {
   from {
@@ -41,7 +46,16 @@
     transform: translateY(0);
   }
 }
+@media (max-width: 767px) {
 
+  .circle {
+    display: none;
+   
+  }
+  .button-name {
+    display: none;
+  }
+}
 
 .circle-btn {
   position: absolute;

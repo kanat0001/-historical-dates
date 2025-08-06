@@ -1,4 +1,5 @@
 import { useState, forwardRef, useImperativeHandle } from "react";
+import useIsMobile from "../hooks/useIsMobile";
 import { cardsData, PeriodKey } from "../data/cardsData";
 import AnimatedYearRange from "./YearCards";
 import "./CircleButton.css";
@@ -30,6 +31,9 @@ const CircleButton = forwardRef<CircleButtonHandle, Props>(
     const radius = 280;
     const [rotation, setRotation] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const isMobile = useIsMobile();
+
+    
 
     const handleClick = (index: number) => {
       const anglePerButton = 360 / buttonCount;
@@ -58,13 +62,15 @@ const CircleButton = forwardRef<CircleButtonHandle, Props>(
     return (
         <div className="circle-wrapper">
           <div className="button-name" key={selectedKey}>{keyTitles[selectedKey]}</div>
-        <div
+
+          {!isMobile && (
+            <div
           className="circle"
           style={{
             transform: `rotate(${rotation}deg)`,
             transition: "transform 1s ease-in-out"
           }}
-        >
+          >
           {keys.map((key, i) => {
             const angle = (360 / buttonCount) * i - 60;
             const rad = (angle * Math.PI) / 180;
@@ -85,6 +91,8 @@ const CircleButton = forwardRef<CircleButtonHandle, Props>(
             );
           })}
         </div>
+          )}
+        
         <AnimatedYearRange selectedKey={selectedKey} />
       </div>
     );

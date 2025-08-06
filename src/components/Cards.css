@@ -30,8 +30,8 @@
 
 .card {
   flex: 0 0 auto;
-  width: 500px;
-  height: 150px;
+  width: 400px;
+  height: 200px;
   background-color: #f0f0f0;
   border-radius: 8px;
   padding: 0;
@@ -60,6 +60,8 @@
   margin-right: 80px;
 
 }
+
+
 .arrow {
   position: absolute;
   top: 700px;
@@ -96,3 +98,43 @@
 .cards::-webkit-scrollbar{
     display: none;
 }
+
+@media (max-width: 834px) {
+  .cards {
+    margin: 0 40px;
+  }
+  .card {
+    width: 350px;
+  }
+  .card-content {
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 767px){
+  .cards-wrapper{
+    border-top: 1px solid #42567A;
+    margin-bottom: 0;
+  }
+  .card-content{
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+  .arrow.left,
+  .arrow.right {
+    display: none;
+  }
+}
+@media (max-width: 500px){
+    .card {
+    width: 300px;
+  }
+}
+@media (max-width: 320px){
+  .cards{
+    margin: 0 20px;
+  }
+}
+

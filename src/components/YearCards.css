@@ -10,6 +10,38 @@
   font-family: "PT Sans", sans-serif;
 }
 
+@media (max-width: 1440px) {
+  .year-range {
+    font-size: 150px;
+  }
+}
+@media (max-width: 834px) {
+  .year-range {
+    font-size: 120px;
+  }
+}
+@media (max-width: 600px) {
+  .year-range {
+    font-size: 100px;
+  }
+}
+@media (max-width: 516px){
+  .year-range {
+    font-size: 80px;
+  }
+}
+@media (max-width: 412px) {
+  .year-range {
+    font-size: 60px;
+  }
+}
+@media (max-width: 320px) {
+  .year-range {
+    font-size: 56px;
+  }
+}
+
+
 .year-min{
   color: rgb(93, 95, 239);
 }
